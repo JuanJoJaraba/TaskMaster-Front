@@ -28,7 +28,7 @@ export default function Login() {
   const validateLogin = async () => {
     let validation = validateLoginBody(values)
     if (typeof validation === 'string') alert(validation)
-    else httpPost("users/login", values).then((response) => { sessionStorage.setItem("user", response.name), sessionStorage.setItem("id", response.id); router.push("/tasks") }).catch((err) => { console.log(err) });
+    else httpPost("users/login", values).then((response) => { sessionStorage.setItem("user", response.name), sessionStorage.setItem("userId", response.id); router.push("/tasks") }).catch((err) => { console.log(err) });
     validateSesion()
   }
   return (
