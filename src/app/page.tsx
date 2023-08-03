@@ -1,16 +1,16 @@
 "use client"
-import Login from '@/pages/login'
-import Recovery from '@/pages/recover'
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
-import Task from '@/pages/tasks'
-import RegisterComponent from '@/pages/register'
-import EditTaskComponent from '@/pages/edittask/index'
-import CreateTask from '@/pages/createtask/index'
-import EditUserComponent from '@/pages/edituser'
-
+import Login from '@/pages/login';
+import Recovery from '@/pages/recover';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import Task from '@/pages/tasks';
+import RegisterComponent from '@/pages/register';
+import EditTaskComponent from '@/pages/edittask/index';
+import CreateTask from '@/pages/createtask/index';
+import EditUserComponent from '@/pages/edituser';
 
 const PrivateRoute = ({ element: Element, ...rest }: any) => {
   const isAuthenticated = sessionStorage.getItem('user') !== null;
+  console.log (isAuthenticated)
   return (
     <Route
       {...rest}
@@ -19,16 +19,14 @@ const PrivateRoute = ({ element: Element, ...rest }: any) => {
   );
 };
 
-
 export default function App() {
-
   return (
     <BrowserRouter>
       <Routes>
         <Route index element={<Login />} />
         <Route path="/recover" element={<Recovery />} />
         <Route path="/register" element={<RegisterComponent />} />
-        <Route element={<PrivateRoute/>}>
+        <Route element={<PrivateRoute />}>
           <Route path="/createtask" element={<CreateTask />} />
           <Route path="/tasks" element={<Task />} />
           <Route path="/tasks/:id" element={<EditTaskComponent />} />
@@ -36,6 +34,6 @@ export default function App() {
         </Route>
       </Routes>
     </BrowserRouter>
-
-  )
+  );
 }
+

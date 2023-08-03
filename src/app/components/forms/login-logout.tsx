@@ -21,7 +21,9 @@ const Tasks = () => {
     };
     return (
         <div>
-            <Link className="boton-perfil" href={"/user/" + userId}> {user}</Link>
+            <Link href={`/user/${userId}`}>
+                <p className="boton-perfil">{user}</p>
+            </Link>
             <Boton texto="LogOut" callBack={handleLogout} />
         </div>
     );

@@ -12,23 +12,28 @@ import { httpPost } from "@/app/core/repository/http-request-contract";
 import { useRouter } from "next/navigation";
 import { handleInput } from "@/app/core/repository/handle_input";
 import Link from "next/link";
+import { UserModel } from "../edituser";
 
 
 export default function Login() {
   const router = useRouter();
   const [values, setValues] = useState(loginBody)
+  const [user, setUser] = useState(UserModel)
 
   React.useEffect(() => {
     validateSesion()
   }, [])
 
   const validateSesion = () => {
-    (window.sessionStorage.getItem("user") != undefined)
+   const userData = (window.sessionStorage.getItem("user"));
+   if (userData) {
+    setUser(JSON.parse(userData));
+  }
   }
   const validateLogin = async () => {
     let validation = validateLoginBody(values)
     if (typeof validation === 'string') alert(validation)
-    else httpPost("users/login", values).then((response) => { sessionStorage.setItem("user", response.name), sessionStorage.setItem("userId", response.id); router.push("/tasks") }).catch((err) => { console.log(err) });
+    else httpPost("users/login", values).then((response) => { sessionStorage.setItem("user", response.name); sessionStorage.setItem('userId', response.userId); router.push("/tasks") }).catch((err) => { console.log(err) });
     validateSesion()
   }
   return (
