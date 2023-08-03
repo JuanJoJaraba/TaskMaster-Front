@@ -1,11 +1,9 @@
-import { httpGet } from "@/app/core/repository/http-request-contract";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import CreateTaskComponent from "@/pages/updatetask";
-
+import { httpGet } from "@/app/core/repository/http-request-contract";
 
 export default function EditTaskComponent() {
-
     const [task, setTask] = useState({ id: 0, title: "", description: "", datetime: "", priority: "" })
     const [render, renderTask] = useState(<CreateTaskComponent />)
     const router = useRouter()
@@ -15,7 +13,6 @@ export default function EditTaskComponent() {
                 setTask(response)
                 console.log(response);
                 renderTask(<CreateTaskComponent task={task} />)
-
             }).catch((error) => console.log(error))
         }
     }, [router.isReady])

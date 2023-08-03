@@ -1,28 +1,25 @@
 import "@/app/css/login.css"
 import Image from "next/image"
-import { useEffect, useState } from "react";
-import "@/app/css/container-primary.css"
-import 'bootstrap/dist/css/bootstrap.css';
-import bg from "@/app/assets/image/gestion_de_tareas_2.jpg"
-import InputRegister from "@/app/components/forms/input-text/input-text(register)";
-import Boton from "@/app/components/forms/boton/boton";
 import Swal from "sweetalert2";
 import router from "next/router";
+import "@/app/css/container-primary.css"
+import 'bootstrap/dist/css/bootstrap.css';
+import { useEffect, useState } from "react";
 import { taskModelSingle } from "../updatetask";
 import { taskModel } from "@/pages/tasks/index";
-import { httpPost, httpPut } from "@/app/core/repository/http-request-contract";
+import Boton from "@/app/components/forms/boton/boton";
+import bg from "@/app/assets/image/gestion_de_tareas_2.jpg"
 import { handleInput } from "@/app/core/repository/handle_input";
-
+import { httpPost, httpPut } from "@/app/core/repository/http-request-contract";
+import InputRegister from "@/app/components/forms/input-text/input-text(register)";
 
 export default function CreateTask(props: { task?: typeof taskModelSingle }) {
     const [values, setValues] = useState(taskModel)
-
     useEffect(() => {
         if (props.task?.title != '' && props.task != null) {
             setValues([props.task])
         }
     }, [])
-
     const createTask = () => {
         httpPost("tasks", values).then((response) => {
             console.log(response)

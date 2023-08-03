@@ -48,7 +48,6 @@ export default function Task() {
             <div>
                 <Image className="background" src={bg} alt="backgroung"></Image>
                 <div className="row">
-
                     <div className="btn-flotante2">
                         <Tasks/>
                     </div>

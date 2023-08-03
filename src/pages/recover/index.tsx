@@ -1,15 +1,14 @@
 import "@/app/css/login.css"
 import Image from "next/image"
 import { useState } from "react";
+import router from "next/router";
 import "@/app/css/container-primary.css"
 import 'bootstrap/dist/css/bootstrap.css';
-import bg from "@/app/assets/image/gestion_de_tareas_2.jpg"
-import InputRegister from "@/app/components/forms/input-text/input-text(register)";
 import Boton from "@/app/components/forms/boton/boton";
-import { registerBody, validateRegisterBody } from "@/app/core/repository/register/register";
+import bg from "@/app/assets/image/gestion_de_tareas_2.jpg"
 import { handleInput } from "@/app/core/repository/handle_input";
-import router from "next/router";
-
+import InputRegister from "@/app/components/forms/input-text/input-text(register)";
+import { registerBody, validateRegisterBody } from "@/app/core/repository/register/register";
 
 export default function Recovery() {
     const [values, setValues] = useState(registerBody)
@@ -17,7 +16,6 @@ export default function Recovery() {
     const cancelar = () => {
         router.push("/")
     }
-
     return (
         <div>
             <Image className="background" src={bg} alt="backgroung"></Image>
@@ -36,7 +34,6 @@ export default function Recovery() {
             </div>
         </div>
     )
-
 }
 
 

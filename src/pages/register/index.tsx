@@ -1,22 +1,20 @@
 import "@/app/css/login.css"
-import Image from "next/image"
+import React from "react";
+import Swal from "sweetalert2";
+import Image from "next/image";
+import router from "next/router";
 import { useState } from "react";
 import "@/app/css/container-primary.css"
 import 'bootstrap/dist/css/bootstrap.css';
-import bg from "@/app/assets/image/gestion_de_tareas_2.jpg"
-import InputRegister from "@/app/components/forms/input-text/input-text(register)";
 import Boton from "@/app/components/forms/boton/boton";
-import React from "react";
-import Swal from "sweetalert2";
-import { registerBody, validateRegisterBody } from "@/app/core/repository/register/register";
-import { httpPost } from "@/app/core/repository/http-request-contract";
+import bg from "@/app/assets/image/gestion_de_tareas_2.jpg"
 import { handleInput } from "@/app/core/repository/handle_input";
-import router from "next/router";
-
+import { httpPost } from "@/app/core/repository/http-request-contract";
+import InputRegister from "@/app/components/forms/input-text/input-text(register)";
+import { registerBody, validateRegisterBody } from "@/app/core/repository/register/register";
 
 export default function RegisterComponent() {
     const [values, setValues] = useState(registerBody)
-
     const validateLogin = async () => {
         console.log(values)
         let validation = validateRegisterBody(values)

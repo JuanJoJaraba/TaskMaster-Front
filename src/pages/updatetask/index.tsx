@@ -48,10 +48,6 @@ export default function CreateTaskComponent(props: { task?: typeof taskModelSing
 
                    { props.task?.id != null ? (<Boton texto="Update Task" callBack={() => { updateTask() }} />) : 
                     (<Boton texto="Create Task" callBack={() => { updateTask() }} />)}
-
-
-
-
                 </div>
             </div>
         </div>

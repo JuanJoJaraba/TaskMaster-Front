@@ -1,25 +1,23 @@
-import "@/app/css/login.css"
-import Image from "next/image"
-import { useState } from "react";
-import "@/app/css/container-primary.css"
-import 'bootstrap/dist/css/bootstrap.css';
-import bg from "@/app/assets/image/gestion_de_tareas_2.jpg"
-import InputText from "@/app/components/forms/input-text/input-text";
-import Boton from "@/app/components/forms/boton/boton";
 import React from "react";
-import { loginBody, validateLoginBody } from "@/app/core/repository/login/login";
-import { httpPost } from "@/app/core/repository/http-request-contract";
-import { useRouter } from "next/navigation";
-import { handleInput } from "@/app/core/repository/handle_input";
 import Link from "next/link";
+import "@/app/css/login.css";
+import Image from "next/image";
+import { useState } from "react";
 import { UserModel } from "../edituser";
-
+import "@/app/css/container-primary.css";
+import 'bootstrap/dist/css/bootstrap.css';
+import { useRouter } from "next/navigation";
+import Boton from "@/app/components/forms/boton/boton";
+import bg from "@/app/assets/image/gestion_de_tareas_2.jpg";
+import { handleInput } from "@/app/core/repository/handle_input";
+import { httpPost } from "@/app/core/repository/http-request-contract";
+import InputText from "@/app/components/forms/input-text/input-text";
+import { loginBody, validateLoginBody } from "@/app/core/repository/login/login";
 
 export default function Login() {
   const router = useRouter();
   const [values, setValues] = useState(loginBody)
   const [user, setUser] = useState(UserModel)
-
   React.useEffect(() => {
     validateSesion()
   }, [])
@@ -55,7 +53,6 @@ export default function Login() {
           <Link href="/recover">Recuperar contraseña</Link>
           <br />
           <Link href="/register">CREAR CUENTA</Link>
-
         </div>
       </div>
     </div>
