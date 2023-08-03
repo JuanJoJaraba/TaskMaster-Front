@@ -28,10 +28,12 @@ export default function App() {
         <Route index element={<Login />} />
         <Route path="/recover" element={<Recovery />} />
         <Route path="/register" element={<RegisterComponent />} />
-        <PrivateRoute path="/createtask" element={<CreateTask />} />
-        <PrivateRoute path="/tasks" element={<Task />} />
-        <PrivateRoute path="/tasks/:id" element={<EditTaskComponent />} />
-        <PrivateRoute path="/user/:id" element={<EditUserComponent />} />
+        <Route element={<PrivateRoute/>}>
+          <Route path="/createtask" element={<CreateTask />} />
+          <Route path="/tasks" element={<Task />} />
+          <Route path="/tasks/:id" element={<EditTaskComponent />} />
+          <Route path="/user/:id" element={<EditUserComponent />} />
+        </Route>
       </Routes>
     </BrowserRouter>
 
