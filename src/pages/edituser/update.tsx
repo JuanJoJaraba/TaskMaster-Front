@@ -42,8 +42,8 @@ export default function UpdateUser(props: { user?: typeof UserModelSingle }) {
                     <InputText hint="Password" id="password" value={props.user?.password} type="text" handleInput={[handleInput, values, setValues]} />
                     <br />
 
-                   { props.user?.id != null ? (<Boton texto="Update User" callBack={() => { updateUser() }} />) : 
-                    (<Boton texto="Update User" callBack={() => { updateUser() }} />)}
+                    {props.user?.id != null ? (<Boton texto="Update User" callBack={() => { updateUser() }} />) :
+                        (<Boton texto="Update User" callBack={() => { updateUser() }} />)}
 
                 </div>
             </div>

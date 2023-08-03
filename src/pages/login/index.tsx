@@ -23,7 +23,7 @@ export default function Login() {
   }, [])
 
   const validateSesion = () => {
-  (window.sessionStorage.getItem("user") != undefined) 
+    (window.sessionStorage.getItem("user") != undefined)
   }
   const validateLogin = async () => {
     let validation = validateLoginBody(values)

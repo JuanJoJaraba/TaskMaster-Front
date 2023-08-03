@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import bg from "@/app/assets/image/gestion_de_tareas_2.jpg"
 import InputRegister from "@/app/components/forms/input-text/input-text(register)";
 import Boton from "@/app/components/forms/boton/boton";
-import { registerBody } from "@/app/core/repository/register/register";
+import { registerBody, validateRegisterBody } from "@/app/core/repository/register/register";
 import { handleInput } from "@/app/core/repository/handle_input";
 import router from "next/router";
 
@@ -14,10 +14,10 @@ import router from "next/router";
 export default function Recovery() {
     const [values, setValues] = useState(registerBody)
 
-    const cancelar = () =>{
+    const cancelar = () => {
         router.push("/")
     }
-    
+
     return (
         <div>
             <Image className="background" src={bg} alt="backgroung"></Image>
@@ -30,7 +30,7 @@ export default function Recovery() {
                     <InputRegister hint="Email" id="correo" type="text" handleInput={[handleInput, values, setValues]} />
                     <br />
                     <br />
-                    <Boton texto='Recuperar contraseña' callBack={() => { }} />
+                    <Boton texto='Recuperar contraseña' callBack={() => {alert(validateRegisterBody(values))}} />
                     <Boton texto='Cancelar' callBack={cancelar} />
                 </div>
             </div>
