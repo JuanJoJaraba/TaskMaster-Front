@@ -13,7 +13,6 @@ export default function ContainerUser(props: { user: any }) {
       <Button variant="primary" onClick={handleShow}>
         Mi Perfil
       </Button>
-
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Edit Profile</Modal.Title>

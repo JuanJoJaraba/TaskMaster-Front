@@ -12,8 +12,6 @@ import ContainerTask from "@/app/components/container-task/container.task";
 import Tasks from "@/app/components/forms/login-logout";
 
 
-
-
 export const taskModel = [{ id: 1, title: "", description: "", datetime: "", priority: "" }]
 export default function Task() {
     const [tasks, setTask] = useState(taskModel);
@@ -32,7 +30,6 @@ export default function Task() {
             setBusqueda(e.target.value);
             filtrar(e.target.value)
         }
-
         React.useEffect(() => {
             httpGet("tasks").then((data) => {
                 setTask(data)
@@ -43,10 +40,7 @@ export default function Task() {
         const results = tasks.map((task) =>
             <ContainerTask key={task.id} task={task} />
         );
-        const Logout = () => {
-            sessionStorage.removeItem("user");
-            router.push("/")
-        }
+
         const creartask = () => {
             router.push("/createtask")
         }
