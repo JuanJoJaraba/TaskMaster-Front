@@ -1,5 +1,5 @@
 import "@/app/css/login.css"
-import { UserModel } from ".";
+import { UserModel } from "./[id]";
 import Image from "next/image"
 import "@/app/css/container-primary.css"
 import 'bootstrap/dist/css/bootstrap.css';
@@ -9,6 +9,7 @@ import bg from "@/app/assets/image/gestion_de_tareas_2.jpg"
 import { handleInput } from "@/app/core/repository/handle_input";
 import InputText from "@/app/components/forms/input-text/input-text";
 import { httpPut } from "@/app/core/repository/http-request-contract";
+import router from "next/router";
 
 export const UserModelSingle = { id: 1, name: "", lastName: "", email: "", password: "" }
 export default function UpdateUser(props: { user?: typeof UserModelSingle }) {
@@ -25,6 +26,9 @@ export default function UpdateUser(props: { user?: typeof UserModelSingle }) {
             console.log(error)
         })
     }
+    const cancelar = () =>{
+        router.push("/home")
+    }
     return (
         <div>
             <Image className="background" src={bg} alt="backgroung"></Image>
@@ -33,12 +37,13 @@ export default function UpdateUser(props: { user?: typeof UserModelSingle }) {
                     <h2 className="h2 mt-4">TASK MASTER</h2>
                     <h2 className="h2 mt-4">Edit User</h2>
                     <InputText hint="Nombre" id="name" value={props.user?.name} type="text" handleInput={[handleInput, values, setValues]} />
-                    <InputText hint="Apellidos" id="lastName" value={props.user?.lastName} type="date" handleInput={[handleInput, values, setValues]} />
+                    <InputText hint="Apellidos" id="lastName" value={props.user?.lastName} type="text" handleInput={[handleInput, values, setValues]} />
                     <InputText hint="Email" id="email" value={props.user?.email} type="text" handleInput={[handleInput, values, setValues]} />
                     <InputText hint="Password" id="password" value={props.user?.password} type="text" handleInput={[handleInput, values, setValues]} />
                     <br />
                     {props.user?.id != null ? (<Boton texto="Update User" callBack={() => { updateUser() }} />) :
                         (<Boton texto="Update User" callBack={() => { updateUser() }} />)}
+                        <Boton texto="Cancelar" callBack={cancelar} />
                 </div>
             </div>
         </div>

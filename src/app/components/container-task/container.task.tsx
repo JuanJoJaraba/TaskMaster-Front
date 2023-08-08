@@ -35,7 +35,7 @@ export default function ContainerTask(props: { task: any }) {
                         <Button variant="secondary" onClick={handleClose}>
                             Close
                         </Button>
-                        <Link className="btn btn-primary" href={"/tasks/" + props.task.id}> Edit </Link>
+                        <Link className="btn btn-primary" href={"/task/" + props.task.id}> Edit </Link>
                     </Modal.Footer>
                 </Modal>
             </>

@@ -1,4 +1,4 @@
-import UpdateUser from "./update"
+import UpdateUser from "."
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 import { httpGet } from "@/app/core/repository/http-request-contract"
@@ -11,7 +11,7 @@ export default function EditUserComponent() {
     const router = useRouter()
     useEffect(() => {
         if (router.asPath !== router.route) {
-            httpGet("user/" + router.query.id).then((response) => {
+            httpGet("users/" + router.query.id).then((response) => {
                 setUser(response)
                 console.log(response);
                 renderUser(<UpdateUser user={user}/>)

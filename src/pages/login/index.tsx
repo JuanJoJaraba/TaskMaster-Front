@@ -3,7 +3,6 @@ import Link from "next/link";
 import "@/app/css/login.css";
 import Image from "next/image";
 import { useState } from "react";
-import { UserModel } from "../edituser";
 import "@/app/css/container-primary.css";
 import 'bootstrap/dist/css/bootstrap.css';
 import { useRouter } from "next/navigation";
@@ -13,25 +12,31 @@ import { handleInput } from "@/app/core/repository/handle_input";
 import { httpPost } from "@/app/core/repository/http-request-contract";
 import InputText from "@/app/components/forms/input-text/input-text";
 import { loginBody, validateLoginBody } from "@/app/core/repository/login/login";
+import Swal from "sweetalert2";
+
 
 export default function Login() {
   const router = useRouter();
   const [values, setValues] = useState(loginBody)
-  const [user, setUser] = useState(UserModel)
+  
+
   React.useEffect(() => {
     validateSesion()
   }, [])
 
   const validateSesion = () => {
-   const userData = (window.sessionStorage.getItem("user"));
-   if (userData) {
-    setUser(JSON.parse(userData));
-  }
+    if (sessionStorage.getItem("user") != undefined)
+    
+      router.push("/home")
   }
   const validateLogin = async () => {
     let validation = validateLoginBody(values)
     if (typeof validation === 'string') alert(validation)
-    else httpPost("users/login", values).then((response) => { sessionStorage.setItem("user", response.name); sessionStorage.setItem('userId', response.userId); router.push("/tasks") }).catch((err) => { console.log(err) });
+    else httpPost("users/login", values).then((response) => {
+      if (response.name != null || response.name != undefined)
+        sessionStorage.setItem("user", response.name); 
+        
+    }).catch((err) => { console.log(err) });
     validateSesion()
   }
   return (
