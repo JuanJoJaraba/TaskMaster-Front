@@ -8,12 +8,11 @@ import React from 'react';
 
 const Tasks = () => {
     const [user, setUser] = useState<string | null>(null);
-    // const [userId, setUserId] = useState<string | null>(null);
+    
     useEffect(() => {
         const userName = sessionStorage.getItem('user');
-        // const userId = sessionStorage.getItem('userId');
         setUser(userName);
-        // setUserId(userId);
+       
     }, []);
     const handleLogout = () => {
         sessionStorage.clear();
@@ -22,9 +21,10 @@ const Tasks = () => {
     return (
         <div>
             <Link href={""}>
-                <p className="boton-perfil">{user}</p>
+                <p className="boton-perfil">{user} </p>
             </Link>
             <Boton texto="LogOut" callBack={handleLogout} />
+            
         </div>
     );
 };

@@ -14,30 +14,36 @@ import InputText from "@/app/components/forms/input-text/input-text";
 import { loginBody, validateLoginBody } from "@/app/core/repository/login/login";
 import Swal from "sweetalert2";
 
-
 export default function Login() {
   const router = useRouter();
-  const [values, setValues] = useState(loginBody)
+  const [values, setValues] = useState(loginBody);
   
-
+  const validateSesion = () => {
+    if (sessionStorage.getItem("user") != undefined)
+      router.push("/home")
+  }
+  const invalidateSesion = () => {
+    if (sessionStorage.getItem("user") == undefined || sessionStorage.getItem("user") == null)
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Email o password incorrecto',
+    })
+  }
   React.useEffect(() => {
     validateSesion()
   }, [])
 
-  const validateSesion = () => {
-    if (sessionStorage.getItem("user") != undefined)
-    
-      router.push("/home")
-  }
   const validateLogin = async () => {
     let validation = validateLoginBody(values)
-    if (typeof validation === 'string') alert(validation)
+    if (typeof validation === 'string' ) alert(validation)
     else httpPost("users/login", values).then((response) => {
       if (response.name != null || response.name != undefined)
-        sessionStorage.setItem("user", response.name); 
-        
+        sessionStorage.setItem("user", response.name);  
     }).catch((err) => { console.log(err) });
     validateSesion()
+    invalidateSesion()
+   
   }
   return (
     <div>

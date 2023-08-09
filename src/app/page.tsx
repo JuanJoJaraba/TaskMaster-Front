@@ -7,8 +7,12 @@ import EditTaskComponent from '@/pages/task/[id]';
 import EditUserComponent from '@/pages/user/[id]';
 import Home from '@/pages/home';
 import CreateTaskComponent from '@/pages/task';
+import PrivateRoute from './components/privateroute';
+
+
 
 export default function App() {
+  
   return (
     <BrowserRouter>
       <Routes>
