@@ -17,3 +17,6 @@ export const httpPost = async (endpoint: string, json: any): Promise<any | any> 
 export const httpPut = async (endpoint: string, json: any, id: string): Promise<any | any> => {
     return await axios.put(url + '/' + endpoint + '/' + id, json).then((response) => response.data).then((data) => data).catch((err) => err);
 }
+export const httpDelete = async (endpoint: string, json: any, id: string): Promise<any | any> => {
+    return await axios.delete(url + '/' + endpoint + '/' + id, json).then((response) => response.data).then((data) => data).catch((err) => err);
+}

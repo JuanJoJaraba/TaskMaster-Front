@@ -9,7 +9,7 @@ import { taskModel, taskModelSingle } from "@/pages/home/index";
 import Boton from "@/app/components/forms/boton/boton";
 import bg from "@/app/assets/image/gestion_de_tareas_2.jpg"
 import { handleInput } from "@/app/core/repository/handle_input";
-import { httpPost, httpPut } from "@/app/core/repository/http-request-contract";
+import { httpDelete, httpPost, httpPut } from "@/app/core/repository/http-request-contract";
 import InputRegister from "@/app/components/forms/input-text/input-text(register)";
 
 
@@ -54,6 +54,23 @@ export default function CreateTask(props: { task?: typeof taskModelSingle }) {
             router.push("/home")
         })
     }
+
+    const deleteTask = () => {
+        httpDelete("tasks", values, props.task?.id + '').then((response) => {
+            console.log(response);
+        }).catch((error) => {
+            console.log(error)
+        }).then((response) => {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Ha eliminado la tarea exitosamente',
+                showConfirmButton: false,
+                timer: 2000
+            })
+            router.push("/home")
+        })
+    }
     function setDate(date?: string): string {
         var dateArray = date?.split("T")
         try {
@@ -74,6 +91,8 @@ export default function CreateTask(props: { task?: typeof taskModelSingle }) {
                     <h2 className="h2 mt-4">Crear Task</h2>
                     <InputRegister hint="Titulo" id="title" value={props.task?.title} type="text" handleInput={[handleInput, values, setValues]} />
                     <InputRegister hint="Fecha" id="datetime" value={setDate(props.task?.datetime)} type="date" handleInput={[handleInput, values, setValues]} />
+                    <br />
+                    <label className="label" htmlFor="priority">Priority: In Progress or Complete</label>
                     <InputRegister hint="Prioridad" id="priority" value={props.task?.priority} type="text" handleInput={[handleInput, values, setValues]} />
                     <InputRegister hint="Descripcion" id="description" value={props.task?.description} type="textarea" handleInput={[handleInput, values, setValues]} />
                     <br />
@@ -81,6 +100,7 @@ export default function CreateTask(props: { task?: typeof taskModelSingle }) {
                         props.task?.id != null ? (<Boton texto="Update Task" callBack={() => { updateTask() }} />
                         ) : (<Boton texto="Create Task" callBack={() => { createTask() }} />)
                     }
+                    <Boton texto="Delete Task" callBack={() => { deleteTask() }} />
                     <Boton texto="Cancelar" callBack={cancelar} />
                 </div>
             </div>

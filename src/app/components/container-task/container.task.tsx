@@ -16,7 +16,6 @@ export default function ContainerTask(props: { task: any }) {
         <div className="list-group" key={props.task.id}>
             <div>
                 <h5 className="mb-1 mt-4 ml-4">{props.task.title}</h5>
-                <small>{props.task.datetime}</small>
             </div>
             <br />
             <>
