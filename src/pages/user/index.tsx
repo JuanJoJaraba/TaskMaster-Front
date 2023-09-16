@@ -10,6 +10,7 @@ import { handleInput } from "@/app/core/repository/handle_input";
 import InputText from "@/app/components/forms/input-text/input-text";
 import { httpPut } from "@/app/core/repository/http-request-contract";
 import router from "next/router";
+import Swal from "sweetalert2";
 
 export const UserModelSingle = { id: 1, name: "", lastName: "", email: "", password: "" }
 export default function UpdateUser(props: { user?: typeof UserModelSingle }) {
@@ -24,6 +25,15 @@ export default function UpdateUser(props: { user?: typeof UserModelSingle }) {
             console.log(response);
         }).catch((error) => {
             console.log(error)
+        }).then((response) => {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Se actualizo correctamente el usuario',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            router.push("/home")
         })
     }
     const cancelar = () =>{

@@ -20,11 +20,26 @@
     background-color: rgb(126, 163, 204);
     height: 100%;
 }
-.container-secundary{
+
+.container-secundary {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 0px;
+}
+
+.container-secundary2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    margin-top: 0px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    background-color: #f2f2f2;
+    padding: 20px;
+
 }
 
 h1 {
@@ -98,7 +113,8 @@ a {
     transition: all 300ms ease 0ms;
     z-index: 99;
 }
-.btn-flotante2{
+
+.btn-flotante2 {
     position: fixed;
     margin: 10px;
 }

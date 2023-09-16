@@ -17,18 +17,18 @@ import Swal from "sweetalert2";
 export default function Login() {
   const router = useRouter();
   const [values, setValues] = useState(loginBody);
-  
+
   const validateSesion = () => {
     if (sessionStorage.getItem("user") != undefined)
       router.push("/home")
   }
   const invalidateSesion = () => {
     if (sessionStorage.getItem("user") == undefined || sessionStorage.getItem("user") == null)
-    Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'Email o password incorrecto',
-    })
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Email o password incorrecto',
+      })
   }
   React.useEffect(() => {
     validateSesion()
@@ -36,15 +36,31 @@ export default function Login() {
 
   const validateLogin = async () => {
     let validation = validateLoginBody(values)
-    if (typeof validation === 'string' ) alert(validation)
-    else httpPost("users/login", values).then((response) => {
-      if (response.name != null || response.name != undefined)
-        sessionStorage.setItem("user", response.name);  
-    }).catch((err) => { console.log(err) });
-    validateSesion()
-    invalidateSesion()
-   
+    if (typeof validation === 'string' ) {
+      alert(validation)
+    } else {
+      try {
+        const response = await httpPost("auth/login", values)
+        if (response && response.token && response.name) {
+          sessionStorage.setItem("token", response.token)
+          sessionStorage.setItem("user", response.name)
+          sessionStorage.setItem("userId", response.id);
+          router.push("/home");
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Email o contraseña incorrecto",
+          });
+          invalidateSesion();
+        }
+      } catch (err) {
+        console.error(err);
+        invalidateSesion();
+      }
+    }
   }
+
   return (
     <div>
       <Image className="background" src={bg} alt="backgroung"></Image>

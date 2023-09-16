@@ -11,12 +11,15 @@ import { httpGet } from "@/app/core/repository/http-request-contract";
 import ContainerTask from "@/app/components/container-task/container.task";
 import Tasks from "@/app/components/forms/login-logout";
 
-export const taskModelSingle = { id: 1, title: "", description: "", datetime: "", priority: "" }
+export const taskModelSingle = { id: 1, title: "", description: "", datetime: "", priority: "", status: "" }
 export const taskModel = [taskModelSingle]
 export default function Home() {
     const [tasks, setTask] = useState(taskModel);
     const [busqueda, setBusqueda] = useState("");
     const [tablaTasks, setTablaTasks] = useState(taskModel);
+    const pendienteTasks = tasks.filter(task => task.status === "pendiente");
+    const progresoTasks = tasks.filter(task => task.status === "progreso");
+    const completadoTasks = tasks.filter(task => task.status === "completado");
     const filtrar = (terminoBusqueda: string) => {
         var resultadosBusqueda = tablaTasks.filter((elemento) => {
             if (elemento.title.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())
@@ -31,12 +34,14 @@ export default function Home() {
         filtrar(e.target.value)
     }
     React.useEffect(() => {
-        if(sessionStorage.getItem("user" ) == undefined){
+        if (sessionStorage.getItem("user") == undefined) {
             router.push("/login")
         }
         httpGet("tasks").then((data) => {
-            setTask(data)
-            setTablaTasks(data);
+            if (Array.isArray(data)) {
+                setTask(data);
+                setTablaTasks(data);
+            }
             console.log(data)
         }).catch((error) => console.log(error))
     }, [])
@@ -54,14 +59,27 @@ export default function Home() {
                 <div className="btn-flotante2">
                     <Tasks />
                 </div>
-                <div className="container-card col-md-6 offset-md-6">
+                <div className="container-card col-md-9 offset-md-3">
                     <h2 className="h2 mt-3">TASK MASTER</h2>
                     <br />
                     <div className="containerInput">
                         <input className="form-control inputBuscar" type="search" value={busqueda} placeholder="Busqueda por titulo" onChange={handleChange} />
                     </div>
                     <div className="container-secundary">
-                        {results}
+                        <div className="container-secundary2">
+                            <div className="column">
+                                <h3>Pendiente</h3>
+                                {pendienteTasks.map(task => <ContainerTask key={task.id} task={task} />)}
+                            </div>
+                            <div className="column">
+                                <h3>Progreso</h3>
+                                {progresoTasks.map(task => <ContainerTask key={task.id} task={task} />)}
+                            </div>
+                            <div className="column">
+                                <h3>Completado</h3>
+                                {completadoTasks.map(task => <ContainerTask key={task.id} task={task} />)}
+                            </div>
+                        </div>
                     </div>
                     <div className="btn-flotante">
                         <Boton texto='Crear Task' callBack={creartask} />

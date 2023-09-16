@@ -5,7 +5,7 @@ import CreateTask from ".";
 
 
 export default function EditTaskComponent() {
-    const [task, setTask] = useState({ id: 0, title: "", description: "", datetime: "", priority: "" })
+    const [task, setTask] = useState({ id: 0, title: "", description: "", datetime: "", priority: "", status:""})
     const [render, renderTask] = useState(<CreateTask />)
     const router = useRouter()
     useEffect(() => {

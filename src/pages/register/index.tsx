@@ -27,7 +27,7 @@ export default function RegisterComponent() {
                 showConfirmButton: false,
                 timer: 2000
             })
-        })  
+        })
         router.push("/")
     }
     return (
