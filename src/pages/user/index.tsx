@@ -43,9 +43,9 @@ export default function UpdateUser(props: { user?: typeof UserModelSingle }) {
         <div>
             <Image className="background" src={bg} alt="backgroung"></Image>
             <div className="row ">
-                <div className="container-primary col-md-4 offset-md-8">
-                    <h2 className="h2 mt-4">TASK MASTER</h2>
-                    <h2 className="h2 mt-4">Edit User</h2>
+                <div className="container-primary col-md-4 offset-md-5">
+                    <h1 className="h2 mt-4">TASK MASTER</h1>
+                    <h1 className="h2 mt-4">Edit User</h1>
                     <InputText hint="Nombre" id="name" value={props.user?.name} type="text" handleInput={[handleInput, values, setValues]} />
                     <InputText hint="Apellidos" id="lastName" value={props.user?.lastName} type="text" handleInput={[handleInput, values, setValues]} />
                     <InputText hint="Email" id="email" value={props.user?.email} type="text" handleInput={[handleInput, values, setValues]} />

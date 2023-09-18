@@ -20,11 +20,11 @@ export default function Recovery() {
         <div>
             <Image className="background" src={bg} alt="backgroung"></Image>
             <div className="row ">
-                <div className="container-primary col-md-3 offset-md-9">
+                <div className="container-primary2 col-md-3 offset-md-4 mt-3">
                     <br />
                     <br />
-                    <h2 className="h2 mt-5">TASK MASTER</h2>
-                    <h2 className="h2">Recuperar Contraseña</h2>
+                    <h1 className="h2 mt-2">TASK MASTER</h1>
+                    <h1 className="h2">Recuperar Contraseña</h1>
                     <InputRegister hint="Email" id="correo" type="text" handleInput={[handleInput, values, setValues]} />
                     <br />
                     <br />

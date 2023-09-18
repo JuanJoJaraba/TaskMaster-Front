@@ -34,13 +34,13 @@ export default function RegisterComponent() {
         <div>
             <Image className="background" src={bg} alt="backgroung"></Image>
             <div className="row ">
-                <div className="container-primary col-md-4 offset-md-8">
+                <div className="container-primary2 col-md-4 offset-md-5 mt-5">
                     <h1 className="h1 mt-4">TASK MASTER</h1>
                     <h1 className="h1 mt-4">Registro</h1>
                     <InputRegister hint="Nombres" id="name" type="text" handleInput={[handleInput, values, setValues]} />
                     <InputRegister hint="Apellidos" id="lastName" type="text" handleInput={[handleInput, values, setValues]} />
-                    <InputRegister hint="Password" id="password" type="password" handleInput={[handleInput, values, setValues]} />
                     <InputRegister hint="Email" id="email" type="email" handleInput={[handleInput, values, setValues]} />
+                    <InputRegister hint="Password" id="password" type="password" handleInput={[handleInput, values, setValues]} />
                     <br />
                     <Boton texto='Registrar' callBack={() => { validateLogin() }} />
                     <br />

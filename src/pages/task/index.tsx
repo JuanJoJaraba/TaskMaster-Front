@@ -57,13 +57,15 @@ export default function CreateTask(props: { task?: typeof taskModelSingle }) {
     }
 
     function setDate(date?: string): string {
-        var dateArray = date?.split("T");
-        try {
-          return dateArray!![0];
-        } catch (e: any) {
-          return "";
-        }
-      }
+        if (!date) return '';
+        const dateObj = new Date(date);
+        return dateObj.toLocaleDateString(undefined, {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric'
+
+        });
+    }
     const cancelar = () => {
         router.push("/home")
     }
@@ -73,9 +75,9 @@ export default function CreateTask(props: { task?: typeof taskModelSingle }) {
         <div>
             <Image className="background" src={bg} alt="backgroung"></Image>
             <div className="row ">
-                <div className="container-primary col-md-4 offset-md-8">
-                    <h2 className="h2 mt-4">TASK MASTER</h2>
-                    <h2 className="h2 mt-4">Crear Task</h2>
+                <div className="container-primary col-md-5 offset-md-4 mt-1 mb-2" >
+                    <h1 className="h2 mt-4">TASK MASTER</h1>
+                    <h1 className="h2 mt-4">Create/Edit Task</h1>
                     <InputRegister hint="Titulo" id="title" value={props.task?.title} type="text" handleInput={[handleInput, values, setValues]} />
                     <InputRegister hint="Fecha" id="datetime" value={setDate(props.task?.datetime)} type="date" handleInput={[handleInput, values, setValues]} />
                     <InputRegister hint="Prioridad" id="priority" value={props.task?.priority} type="text" handleInput={[handleInput, values, setValues]} />

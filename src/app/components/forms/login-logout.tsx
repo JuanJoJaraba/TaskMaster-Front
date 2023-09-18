@@ -30,7 +30,7 @@ const Tasks = () => {
     
     return (
         <div>
-            <Link href={'/user/'+Id}>
+            <Link href={'/user/'+Id} style={{ textDecoration: 'none' }}>
                 <p className="boton-perfil">{user} </p>
             </Link>
             <Boton texto="LogOut" callBack={handleLogout} />

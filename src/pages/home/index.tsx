@@ -60,7 +60,7 @@ export default function Home() {
                     <Tasks />
                 </div>
                 <div className="container-card col-md-9 offset-md-3">
-                    <h2 className="h2 mt-3">TASK MASTER</h2>
+                    <h1 className="h2 mt-3">TASK MASTER</h1>
                     <br />
                     <div className="containerInput">
                         <input className="form-control inputBuscar" type="search" value={busqueda} placeholder="Busqueda por titulo" onChange={handleChange} />

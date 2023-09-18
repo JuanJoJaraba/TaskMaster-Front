@@ -8,7 +8,7 @@ import EditUserComponent from '@/pages/user/[id]';
 import Home from '@/pages/home';
 import CreateTaskComponent from '@/pages/task';
 import React from 'react';
-import PrivateRoute from './components/privateroute';
+
 
 
 
