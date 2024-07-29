@@ -1,12 +1,32 @@
-Este es un proyecto llamado TaskMaster en el que consiste hacer una pagina donde los usuarios se registren y a traves de su cuenta puedan crear tareas, son anotaciones que los usuarios necesiten hacer de algun evento en especifico, pueden crear, editar y mostrar las tareas, ademas de crear y editar el usuario.
-Comparto las depedencias que se utilizaron para este proyecto
-npm install next@latest react@latest react-dom@latest
-npm i  react-router-dom@latest
-npm install react-bootstrap bootstrap
-npm install react-icons --save
-npm i font-awesome       
-npm i axios  
+TaskMaster
+TaskMaster es una aplicación web que permite a los usuarios registrarse, iniciar sesión y gestionar tareas personales. Los usuarios pueden crear, editar y eliminar tareas, así como gestionar su perfil.
 
-Comparto el link de figma de las vistas del proyecto
+Funcionalidades
+Registro e inicio de sesión: Los usuarios pueden crear una cuenta y autenticarse para acceder a sus tareas.
+Gestión de tareas: Los usuarios pueden crear, editar y eliminar tareas.
+Gestión de perfil: Los usuarios pueden editar su información personal.
+
+Tecnologías Utilizadas
+Frontend:
+Next.js para el renderizado del lado del servidor y la generación de sitios estáticos.
+React para la construcción de componentes de interfaz de usuario.
+React Router DOM para la navegación entre páginas.
+React Bootstrap y Bootstrap para el diseño y la interfaz de usuario.
+React Icons para íconos.
+Font Awesome para una colección de íconos adicionales.
+Axios para realizar solicitudes HTTP.
+
+Backend:
+
+NestJS para construir la API RESTful.
+TypeScript para un desarrollo más seguro y estructurado en JavaScript.
+TypeORM (si se utiliza) para la gestión de bases de datos.
+JWT (si se utiliza) para autenticación y autorización.
+
+
+Enlaces de Diseño
+Las vistas del proyecto están diseñadas en Figma. Puedes ver los detalles de diseño y los prototipos aquí:
+
+Figma - TaskMaster
 https://www.figma.com/file/7a93MwPEpvNZjqi2Ur2Uxt/TaskMaster(JUAN)?type=design&node-id=0-1&mode=design&t=C20hZTCGfHQDVKhL-0
 
